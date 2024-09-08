@@ -22,7 +22,7 @@ export const create = mutation({
     }
     const randomImage = images[Math.floor(Math.random() * images.length)];
 
-    const board = ctx.db.insert("boards", {
+    const board = await ctx.db.insert("boards", {
       title: args.title,
       orgId: args.orgId,
       aurthorId: identity.subject,

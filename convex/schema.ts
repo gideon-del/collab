@@ -14,4 +14,9 @@ export default defineSchema({
       searchField: "title",
       filterFields: ["orgId"],
     }),
+  favourites: defineTable({
+    userId: v.string(),
+    boardId: v.id("boards"),
+    orgId: v.string(),
+  }).index("by_user", ["userId"]),
 });
