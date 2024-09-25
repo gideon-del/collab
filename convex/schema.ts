@@ -18,5 +18,10 @@ export default defineSchema({
     userId: v.string(),
     boardId: v.id("boards"),
     orgId: v.string(),
-  }).index("by_user", ["userId"]),
+  })
+    .index("by_user", ["userId"])
+    .index("by_board", ["boardId"])
+    .index("by_user_org", ["orgId", "userId"])
+    .index("by_user_board", ["userId", "boardId"])
+    .index("by_user_board_org", ["boardId", "orgId", "userId"]),
 });

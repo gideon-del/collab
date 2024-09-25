@@ -14,7 +14,7 @@ interface BoardListProps {
   };
 }
 const BoardList = ({ query, orgId }: BoardListProps) => {
-  const data = useQuery(api.boards.get, { orgId });
+  const data = useQuery(api.boards.get, { orgId, search: query.search });
   const favourites = useQuery(api.favourite.getAll, { orgId });
   const favBoards = data?.filter(
     (board) => !!favourites?.find((favBoard) => favBoard.boardId === board._id)

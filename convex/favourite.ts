@@ -29,7 +29,10 @@ export const addFavourite = mutation({
     if (!identity) {
       throw Error("Unauthorized");
     }
-
+    const board = await ctx.db.get(args.boardId);
+    if (!board) {
+      throw Error("Board not found");
+    }
     const newFavourite = await ctx.db.insert("favourites", {
       orgId: args.orgId,
       boardId: args.boardId,
